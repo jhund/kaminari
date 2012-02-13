@@ -19,7 +19,7 @@ module Kaminari
         ::Plucky::Query.send :include, Kaminari::PageScopeMethods
       end
 
-      if defined? ::DataMapper
+      if defined? ::DataMapper && defined? ::DataMapper::Collection && defined? ::DataMapper::Model
         require 'kaminari/models/data_mapper_extension'
         ::DataMapper::Collection.send :include, Kaminari::DataMapperExtension::Collection
         ::DataMapper::Model.append_extensions Kaminari::DataMapperExtension::Model
